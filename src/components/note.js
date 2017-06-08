@@ -33,6 +33,21 @@ export default class Note extends React.Component {
     edit() {
         this.setState({editing: true});
     }
+    componentDidUpdate() {
+        if (this.state.editing) {
+            this
+                .refs
+                .newText
+                .focus()
+            this
+                .refs
+                .newText
+                .select()
+        }
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.children !== nextProps.children || this.state !== nextState
+    }
     render() {
         return (
             <Draggable>{this.state.editing == true
