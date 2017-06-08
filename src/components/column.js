@@ -6,7 +6,12 @@ export default class Column extends React.Component {
         this.state = {
             notes: []
         };
-        this.remove=this.remove.bind(this);
+        this.remove = this
+            .remove
+            .bind(this);
+        this.updateNote = this
+            .updateNote
+            .bind(this);
     }
     add(text) {
         // store notes array into variable
@@ -24,6 +29,14 @@ export default class Column extends React.Component {
         // set new array equal to the updated array
         this.setState({notes: arr});
     }
+    updateNote(newText, i) {
+        // store notes array into variable
+        var arr = this.state.notes;
+        // get reference to that specific array item
+        arr[i] = newText;
+        // set equal to the new text that the user typed in
+        this.setState({notes: arr});
+    }
     render() {
         return (
             <div className="col s4 add-note-container">
@@ -37,7 +50,11 @@ export default class Column extends React.Component {
                     .notes
                     .map((item, i) => {
                         return (
-                            <Note key={i} index={i} removeFromBoard={this.remove}>
+                            <Note
+                                key={i}
+                                index={i}
+                                removeFromBoard={this.remove}
+                                updateNote={this.updateNote}>
                                 {item}
                             </Note>
                         );
