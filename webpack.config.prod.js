@@ -7,6 +7,13 @@ module.exports = {
     
     './src/index'
   ],
+   resolve: {
+        extensions: ['', '.js', '.jsx', '.css'],
+        modulesDirectories: [
+          'node_modules'
+        ]        
+    }
+,
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
