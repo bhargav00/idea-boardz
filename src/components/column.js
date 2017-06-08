@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Note from './note';
 export default class Column extends React.Component {
     constructor(props) {
         super(props);
@@ -15,11 +15,27 @@ export default class Column extends React.Component {
         // update array
         this.setState({notes: arr});
     }
+    eachNote(item, i) {
+        return (
+            <Note key={i} index={i}>
+                {item}
+            </Note>
+        );
+    }
     render() {
         return (
             <div className="col s4 add-note-container">
-                <button onClick={()=>{this.add("Add a new note!")}} className="waves-effect waves-light btn-large new-note-btn">Add New Note</button>
+                <button
+                    onClick={() => {
+                    this.add("Add a new note!")
+                }}
+                    className="waves-effect waves-light btn-large new-note-btn">Add New Note</button>
+                {this
+                    .state
+                    .notes
+                    .map(this.eachNote)}
             </div>
+
         )
     }
 
