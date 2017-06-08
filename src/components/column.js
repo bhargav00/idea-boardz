@@ -1,11 +1,15 @@
 import React from 'react';
 import Note from './note';
+
 export default class Column extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             notes: []
         };
+        this.add = this
+            .add
+            .bind(this);
         this.remove = this
             .remove
             .bind(this);
@@ -13,29 +17,39 @@ export default class Column extends React.Component {
             .updateNote
             .bind(this);
     }
+    nextId() {
+        this.uniqueId = this.uniqueId || 0
+        return this.uniqueId++
+    }
     add(text) {
-        // store notes array into variable
-        var arr = this.state.notes;
         // push new note into array
-        arr.push(text);
+        var notes = [
+            ...this.state.notes, {
+                id: this.nextId(),
+                note: text
+            }
+        ]
         // update array
-        this.setState({notes: arr});
+        this.setState({notes})
     }
     remove(i) {
-        // store notes array into variable
-        var arr = this.state.notes;
-        // splice out item passed in
-        arr.splice(i, 1);
-        // set new array equal to the updated array
-        this.setState({notes: arr});
+        var notes = this
+            .state
+            .notes
+            .filter(note => note.id !== i)
+        this.setState({notes})
     }
     updateNote(newText, i) {
-        // store notes array into variable
-        var arr = this.state.notes;
-        // get reference to that specific array item
-        arr[i] = newText;
-        // set equal to the new text that the user typed in
-        this.setState({notes: arr});
+        var notes = this
+            .state
+            .notes
+            .map(note=> (note.id !== i)
+                ? note
+                : {
+                    ...note,
+                    note: newText
+                })
+        this.setState({notes})
     }
     render() {
         return (
@@ -51,11 +65,11 @@ export default class Column extends React.Component {
                     .map((item, i) => {
                         return (
                             <Note
-                                key={i}
+                                key={item.id}
                                 index={i}
                                 removeFromBoard={this.remove}
                                 updateNote={this.updateNote}>
-                                {item}
+                                {item.note}
                             </Note>
                         );
                     })}
