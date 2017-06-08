@@ -6,6 +6,7 @@ export default class Column extends React.Component {
         this.state = {
             notes: []
         };
+        this.remove=this.remove.bind(this);
     }
     add(text) {
         // store notes array into variable
@@ -23,13 +24,6 @@ export default class Column extends React.Component {
         // set new array equal to the updated array
         this.setState({notes: arr});
     }
-    eachNote(item, i) {
-        return (
-            <Note key={i} index={i} >
-                {item}
-            </Note>
-        );
-    }
     render() {
         return (
             <div className="col s4 add-note-container">
@@ -41,7 +35,13 @@ export default class Column extends React.Component {
                 {this
                     .state
                     .notes
-                    .map(this.eachNote)}
+                    .map((item, i) => {
+                        return (
+                            <Note key={i} index={i} removeFromBoard={this.remove}>
+                                {item}
+                            </Note>
+                        );
+                    })}
             </div>
 
         )

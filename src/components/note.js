@@ -6,6 +6,14 @@ export default class Note extends React.Component {
         this.state = {
             editing: true
         };
+        this.remove = this
+            .remove
+            .bind(this);
+    }
+    remove() {
+        this
+            .props
+            .removeFromBoard(this.props.index);
     }
     render() {
         return (this.state.editing == true
@@ -23,7 +31,9 @@ export default class Note extends React.Component {
                         </div>
                         <div className="card-action">
                             <button className="waves-effect waves-light btn">Save</button>
-                            <button className="waves-effect waves-light btn red darken-4">Remove</button>
+                            <button
+                                onClick={this.remove}
+                                className="waves-effect waves-light btn red darken-4">Remove</button>
                         </div>
                     </div>
                 </div>
@@ -33,8 +43,10 @@ export default class Note extends React.Component {
                         <span className="card-title">{this.props.children}</span>
                     </div>
                     <div className="card-action">
-                        <button onClick={()=>{this.edit}} className="waves-effect waves-light btn">Edit</button>
-                        <button className="waves-effect waves-light btn red darken-4">Remove</button>
+                        <button className="waves-effect waves-light btn">Edit</button>
+                        <button
+                            onClick={this.remove}
+                            className="waves-effect waves-light btn red darken-4">Remove</button>
                     </div>
                 </div>
             </div>)
