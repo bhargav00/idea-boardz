@@ -52,7 +52,7 @@ export default class Note extends React.Component {
         return (
             <Draggable>{this.state.editing == true
                     ? <div className="col s12 m6 ">
-                            <div className="noteContainer card blue-grey darken-1">
+                            <div className="card blue-grey darken-1 noteContainer">
                                 <div className="noteText card-content white-text">
                                     <textarea
                                         id="textarea1"

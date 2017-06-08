@@ -10,9 +10,13 @@ body {
     overflow-x: hidden;
 }
 
-#app{
-    height: 98%;
+#app,.row{
+    height: 100%;
 }
 .note-container{
-     height: 100%;
+     border-style: ridge;
+      height: 100%;
+}
+.noteContainer{
+    border-style: groove;
 }
