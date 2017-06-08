@@ -54,6 +54,7 @@ export default class Column extends React.Component {
     render() {
         return (
             <div className="col s4 add-note-container">
+                <h5>{this.props.title}</h5>
                 <button
                     onClick={() => {
                     this.add("Add a new note!")
