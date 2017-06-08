@@ -15,9 +15,17 @@ export default class Column extends React.Component {
         // update array
         this.setState({notes: arr});
     }
+    remove(i) {
+        // store notes array into variable
+        var arr = this.state.notes;
+        // splice out item passed in
+        arr.splice(i, 1);
+        // set new array equal to the updated array
+        this.setState({notes: arr});
+    }
     eachNote(item, i) {
         return (
-            <Note key={i} index={i}>
+            <Note key={i} index={i} >
                 {item}
             </Note>
         );
