@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Draggable from 'react-draggable';
 export default class Note extends React.Component {
     constructor(props) {
         super(props);
@@ -16,6 +16,9 @@ export default class Note extends React.Component {
             .edit
             .bind(this);
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.children !== nextProps.children || this.state !== nextState
+    }
     remove() {
         this
             .props
@@ -31,37 +34,40 @@ export default class Note extends React.Component {
         this.setState({editing: true});
     }
     render() {
-        return (this.state.editing == true
-            ? <div className="col s12 m6">
-                    <div className="noteContainer card blue-grey darken-1">
-                        <div className="noteText card-content white-text">
-                            <textarea
-                                id="textarea1"
-                                className="materialize-textarea"
-                                ref="newText"
-                                defaultValue={this.props.children}></textarea>
+        return (
+            <Draggable>{this.state.editing == true
+                    ? <div className="col s12 m6 ">
+                            <div className="noteContainer card blue-grey darken-1">
+                                <div className="noteText card-content white-text">
+                                    <textarea
+                                        id="textarea1"
+                                        className="materialize-textarea"
+                                        ref="newText"
+                                        defaultValue={this.props.children}></textarea>
+                                </div>
+                                <div className="card-action">
+                                    <button onClick={this.save} className="waves-effect waves-light btn">Save</button>
+                                    <button
+                                        onClick={this.remove}
+                                        className="waves-effect waves-light btn red darken-1">Remove</button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="card-action">
-                            <button onClick={this.save} className="waves-effect waves-light btn">Save</button>
-                            <button
-                                onClick={this.remove}
-                                className="waves-effect waves-light btn red darken-4">Remove</button>
+                    : <div className="col s12 m6">
+                        <div className="noteContainer card blue-grey darken-1">
+                            <div className="noteText card-content white-text">
+                                <span className="card-title">{this.props.children}</span>
+                            </div>
+                            <div className="card-action">
+                                <button onClick={this.edit} className="waves-effect waves-light btn">Edit</button>
+                                <button
+                                    onClick={this.remove}
+                                    className="waves-effect waves-light btn red darken-1">Remove</button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            : <div className="col s12 m6">
-                <div className="noteContainer card blue-grey darken-1">
-                    <div className="noteText card-content white-text">
-                        <span className="card-title">{this.props.children}</span>
-                    </div>
-                    <div className="card-action">
-                        <button onClick={this.edit} className="waves-effect waves-light btn">Edit</button>
-                        <button
-                            onClick={this.remove}
-                            className="waves-effect waves-light btn red darken-1">Remove</button>
-                    </div>
-                </div>
-            </div>)
+                    </div>}
+            </Draggable>
+        )
     }
 
 }
