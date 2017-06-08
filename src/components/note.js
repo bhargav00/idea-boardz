@@ -22,12 +22,12 @@ export default class Note extends React.Component {
     remove() {
         this
             .props
-            .removeFromBoard(this.props.index);
+            .removeFromBoard(this.props.id);
     }
     save() {
         this
             .props
-            .updateNote(this.refs.newText.value, this.props.index)
+            .updateNote(this.refs.newText.value, this.props.id)
         this.setState({editing: false});
     }
     edit() {

@@ -43,7 +43,7 @@ export default class Column extends React.Component {
         var notes = this
             .state
             .notes
-            .map(note=> (note.id !== i)
+            .map(note => (note.id !== i)
                 ? note
                 : {
                     ...note,
@@ -67,7 +67,7 @@ export default class Column extends React.Component {
                         return (
                             <Note
                                 key={item.id}
-                                index={i}
+                                id={item.id}
                                 removeFromBoard={this.remove}
                                 updateNote={this.updateNote}>
                                 {item.note}
