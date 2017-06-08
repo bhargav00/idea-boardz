@@ -9,18 +9,30 @@ export default class Note extends React.Component {
         this.remove = this
             .remove
             .bind(this);
+        this.save = this
+            .save
+            .bind(this);
+        this.edit = this
+            .edit
+            .bind(this);
     }
     remove() {
         this
             .props
             .removeFromBoard(this.props.index);
     }
+    save() {
+        this.setState({editing: false});
+    }
+    edit() {
+        this.setState({editing: true});
+    }
     render() {
         return (this.state.editing == true
             ? <div className="col s12 m6">
                     <div className="noteContainer card blue-grey darken-1">
                         <div className="noteText card-content white-text">
-                            <div className="input-field col s6">
+                            <div>
                                 <label htmlFor="textarea1">Note</label>
                                 <textarea
                                     id="textarea1"
@@ -30,7 +42,7 @@ export default class Note extends React.Component {
                             </div>
                         </div>
                         <div className="card-action">
-                            <button className="waves-effect waves-light btn">Save</button>
+                            <button onClick={this.save} className="waves-effect waves-light btn">Save</button>
                             <button
                                 onClick={this.remove}
                                 className="waves-effect waves-light btn red darken-4">Remove</button>
