@@ -27,3 +27,9 @@
 ### Plugin Used
   1. [React-Draggable](https://github.com/mzabriskie/react-draggable) 
 
+### Functionalities
+  1. Dynamic column layout
+  2. Add note
+  3. Edit note
+  4. Remove note
+  5. Notes are draggable by using react-draggable plugin
