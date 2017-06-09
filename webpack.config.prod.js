@@ -20,6 +20,7 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
