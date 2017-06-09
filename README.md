@@ -24,4 +24,6 @@
   2. The Javascript files (ReactJS Components)  : All components are inside ```src/components``` 
   3. All Styles (CSS)                           : Inside ```src/css```
 
+### Plugin Used
+  1. [React-Draggable](https://github.com/mzabriskie/react-draggable) 
 
