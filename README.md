@@ -13,10 +13,11 @@
    ```
 3. Go to ```locahost:7777``` in your browser. If the installation was fine, you should be able to see the landing page.
 
-### Technology Used  
-  1.React  
-  2.Webpack Bundling Tool  
-  3.Material UI   
+### Technology Stack Used  
+  1. React
+  2. Webpack Bundling Tool
+  3. Material UI
+  4. Babel
 
 ### Folder Structure Explained  
   1. The config files (webpack and node server) : All are on the main directory  
