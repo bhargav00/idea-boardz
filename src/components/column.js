@@ -53,7 +53,7 @@ export default class Column extends React.Component {
     }
     render() {
         return (
-            <div className="col s4 note-container">
+            <div className="col s12 m4 note-container">
                 <h5>{this.props.title}</h5>
                 <button
                     onClick={() => {
