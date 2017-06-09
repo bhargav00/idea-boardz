@@ -13,6 +13,8 @@
    ```
 3. Go to ```locahost:7777``` in your browser. If the installation was fine, you should be able to see the landing page.
 
+### [Demo](https://lit-stream-86355.herokuapp.com/) 
+
 ### Technology Stack Used  
   1. React
   2. Webpack Bundling Tool
