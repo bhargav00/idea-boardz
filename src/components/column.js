@@ -60,20 +60,22 @@ export default class Column extends React.Component {
                     this.add("Add a new note!")
                 }}
                     className="waves-effect waves-light btn-large new-note-btn">Add New Note</button>
-                {this
-                    .state
-                    .notes
-                    .map((item, i) => {
-                        return (
-                            <Note
-                                key={item.id}
-                                id={item.id}
-                                removeFromBoard={this.remove}
-                                updateNote={this.updateNote}>
-                                {item.note}
-                            </Note>
-                        );
-                    })}
+                <div className="board">
+                    {this
+                        .state
+                        .notes
+                        .map((item, i) => {
+                            return (
+                                <Note
+                                    key={item.id}
+                                    id={item.id}
+                                    removeFromBoard={this.remove}
+                                    updateNote={this.updateNote}>
+                                    {item.note}
+                                </Note>
+                            );
+                        })}
+                </div>
             </div>
 
         )
